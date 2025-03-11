@@ -1,25 +1,31 @@
 class Pessoa {
-    constructor(nome, idade, doenca) {
+    constructor(nome, idade, doenca, sfuncao) {
         this.nome = nome;
         this.idade = idade;
         this.doenca = doenca;
+        this.sfuncao = sfuncao
     }
 }
 
 class Paciente extends Pessoa {
-    apresentar = () => console.log(`Olá, sou o paciente ${this.nome}`);
-    exibirIdade = () => console.log(`Tenho ${this.idade} anos.`);
-    exibirIdadeDoenca = () => console.log(`E estou com a doença ${this.doenca}`);
+    apresentar = () => {
+        return `Olá, sou o paciente ${this.nome}`;
+    }
+    exibirIdade = () => {
+        return ` Tenho ${this.idade} anos`;
+    }
+    exibirIdadeDoenca = () => {
+        return ` e estou com a doença ${this.doenca}`;
+    }   
 }
 
 class Medico extends Pessoa {
-    constructor(nome, idade, doenca, funcao) {
-        super(nome, idade, doenca); // Chama o construtor da classe Pessoa
-        this.funcao = funcao; // Inicializa a função do médico
+    apresentar = () => {
+        return `Sou o(a) médico(a) ${this.nome}`;
     }
-
-    apresentar = () => console.log(`Sou o(a) médico(a) ${this.nome}`);
-    exibirFuncao = () => console.log(`Minha área é ${this.funcao}`);
+    exibirFuncao = () => {
+        return ` Minha área é ${this.sfuncao}`;
+    }
 }
 
 // Criando os objetos
@@ -27,47 +33,18 @@ const carlos = new Medico("Carlos", 16, "N/A", "pediatra");
 const alfredo = new Medico("Alfredo", 26, "N/A", "Oncologista");
 const gabriel = new Paciente("Gabriel", 24, "câncer");
 const pacheco = new Paciente("Pacheco", 17, "HIV");
-const gutin = new Paciente("Gustavo", 17, "AINDS");
+const gutin = new Paciente("Gustavo", 28, "AINDS");
 const nicolas = new Paciente("Nicolas", 19, "Lepra");
 const guilherme = new Paciente("Guilherme", 26, "Peste negra");
 
-// Array com todos os objetos (médicos e pacientes)
-const pessoas = [carlos, alfredo, gabriel, pacheco, gutin, nicolas, guilherme];
+// document.getElementById("t1").innerText = `Olá, sou o paciente ${gabriel.nome}`
+document.getElementById("t1").innerText = `${carlos.apresentar() +   carlos.exibirFuncao() }`
+document.getElementById("t2").innerText = `${alfredo.apresentar() +   alfredo.exibirFuncao() }`
 
-// Função para preencher a tabela
-function preencherTabela(pessoas) {
-    const tabelaBody = document.querySelector('#tabela tbody'); // Seleciona o corpo da tabela
-    
-    // Limpa qualquer dado anterior
-    tabelaBody.innerHTML = '';
 
-    // Itera sobre a lista de pessoas e cria uma linha para cada uma
-    pessoas.forEach(pessoa => {
-        const linha = document.createElement('tr'); // Cria uma nova linha na tabela
+document.getElementById("t3").innerText = `${pacheco.apresentar() +   pacheco.exibirIdade() + pacheco.exibirIdadeDoenca() }`
+document.getElementById("t4").innerText = `${gutin.apresentar() +   gutin.exibirIdade() + gutin.exibirIdadeDoenca() }`
+document.getElementById("t5").innerText = `${nicolas.apresentar() +   nicolas.exibirIdade() + nicolas.exibirIdadeDoenca() }`
+document.getElementById("t6").innerText = `${guilherme.apresentar() +   guilherme.exibirIdade() + guilherme.exibirIdadeDoenca() }`
+document.getElementById("t7").innerText = `${gabriel.apresentar() +   gabriel.exibirIdade() + gabriel.exibirIdadeDoenca() }`
 
-        // Cria as células (colunas) para cada pessoa
-        const nomeCelula = document.createElement('td');
-        nomeCelula.textContent = pessoa.nome;
-        
-        const idadeCelula = document.createElement('td');
-        idadeCelula.textContent = pessoa.idade;
-        
-        const doencaCelula = document.createElement('td');
-        doencaCelula.textContent = pessoa.doenca;
-        
-        const funcaoCelula = document.createElement('td');
-        funcaoCelula.textContent = pessoa instanceof Medico ? pessoa.funcao : 'Paciente'; // Exibe a função se for médico, caso contrário, exibe 'N/A'
-
-        // Adiciona as células à linha
-        linha.appendChild(nomeCelula);
-        linha.appendChild(idadeCelula);
-        linha.appendChild(doencaCelula);
-        linha.appendChild(funcaoCelula);
-
-        // Adiciona a linha ao corpo da tabela
-        tabelaBody.appendChild(linha);
-    });
-}
-
-// Preenche a tabela com os dados
-preencherTabela(pessoas);
