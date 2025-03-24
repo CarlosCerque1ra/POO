@@ -19,7 +19,7 @@ class Pessoas {
 
 class Aluno extends Pessoas {
     public function estudar() {
-        echo "Sou o aluno {$this->nome}, tenho {$this->idade} anos de idade e estou estudando.<br>";
+        echo "Sou o aluno {$this->nome}, tenho {$this->idade} anos de idade e estou estudando .<br>";
     }
 }
 
@@ -36,8 +36,6 @@ $gabriel = new Aluno("Gabriel", 13, "Solteiro");
 $raul = new Professor("Raul", 56, "Casado");
 $antonela = new Professor("Antonela", 95, "Solteira")
 
-echo $raul->prof();
-echo $raul->verestCivil();
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +46,7 @@ echo $raul->verestCivil();
     <title>Lista</title>
 </head>
 <body>
-    <p><?php   ?></p>
+    <p><?php  $alexandre->estudar(); ?></p>
     <p><?php   ?></p>
     <p><?php   ?></p>
     <p><?php   ?></p>
