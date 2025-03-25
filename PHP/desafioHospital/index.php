@@ -19,13 +19,13 @@ class Pessoas {
 
 class Aluno extends Pessoas {
     public function estudar() {
-        echo "Sou o aluno {$this->nome}, tenho {$this->idade} anos de idade e estou estudando .<br>";
+        echo "Sou o aluno {$this->nome}, tenho {$this->idade} anos de idade e estou estudando e sou {$this->verestCivil()}<br>";
     }
 }
 
 class Professor extends Pessoas {
     public function ensinar() {
-        echo "Sou o(a) professor(a) {$this->nome}, tenho {$this->idade} anos de idade e estou ensinando.<br>";
+        echo "Sou o(a) professor(a) {$this->nome}, tenho {$this->idade} anos de idade e estou ensinando e sou {$this->verestCivil()}<br>";
     }
 }
 
@@ -47,9 +47,9 @@ $antonela = new Professor("Antonela", 95, "Solteira")
 </head>
 <body>
     <p><?php  $alexandre->estudar(); ?></p>
-    <p><?php   ?></p>
-    <p><?php   ?></p>
-    <p><?php   ?></p>
+    <p><?php  $gabriel->estudar(); ?></p>
+    <p><?php  $raul->ensinar(); ?></p>
+    <p><?php $antonela->ensinar();  ?></p>
 </body>
 </html>
 
